@@ -15,7 +15,7 @@ public class Trapdoor : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.touchCount>0)
         {
             OpenDoor();
         }
