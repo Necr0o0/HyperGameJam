@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer > 0.5f + Random.Range(-0.05f, 0.05f) && transform.childCount < 100)
+        if (timer > 0.2f + Random.Range(-0.05f, 0.05f))
         {
            
             Transform trash = _objectPool.GetObject();

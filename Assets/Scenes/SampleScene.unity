@@ -857,6 +857,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160837894}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1404138938 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8414307435311302802, guid: 5492bc9a3572aa848851acc4440f2d69,
+    type: 3}
+  m_PrefabInstance: {fileID: 861009816}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1409090405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,7 +1066,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &1723155868
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1232,6 +1238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6e34c613c1fa274ab8487b42d9868fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bin: {fileID: 1404138938}
   trapDoorLeft: {fileID: 861009818}
   trapDoorRight: {fileID: 861009817}
 --- !u!4 &2013652046
