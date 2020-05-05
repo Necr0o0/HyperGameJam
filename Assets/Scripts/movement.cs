@@ -14,7 +14,7 @@ public class movement : MonoBehaviour
     void FixedUpdate()
     {
         var pos = transform.position;
-        pos.x += Mathf.Sin(Time.time * 5.0f*Mathf.Sin(Time.time))*0.05f;
+        pos.x += Mathf.Sin(Time.time- 3f)*0.005f;
         transform.position = pos;
     }
 }
