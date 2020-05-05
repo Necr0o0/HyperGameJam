@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
     void MoveCamera()
     {
-        Camera.main.transform.DOMoveY( binQueue[currentBox+1].position.y +cameraHight, 1f);
+        Camera.main.transform.DOMoveY( binQueue[currentBox+1].position.y +cameraHight, 1.5f);
     }
 
     void NewMainBox()
