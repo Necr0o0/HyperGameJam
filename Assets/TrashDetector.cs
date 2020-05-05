@@ -5,6 +5,7 @@ public class TrashDetector : MonoBehaviour
 {
     void OnTriggerEnter(Collider collider)
     {
-        SpawnerManager.Manager.spawnedTrash++;
+        if(collider.CompareTag("Trash"))
+            SpawnerManager.Manager.spawnedTrash++;
     }
 }

@@ -32,14 +32,10 @@ public class ObjectPool : MonoBehaviour
 
     public Transform GetObject()
     {
-        Debug.Log(pool.Count);
         for(int i = 0 ;i < pool.Count;i++)
-        {                
-            Debug.Log("TRY REUSE");
-
+        {
             if (!pool[i].activeInHierarchy)
-            {
-                Debug.Log("RESUSE");
+            { 
                 pool[i].SetActive(true);
                 return pool[i].transform;
             }

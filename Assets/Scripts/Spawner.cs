@@ -14,7 +14,6 @@ public class Spawner : MonoBehaviour
     void Start()
     {
          timer = 0.0f;
-         _objectPool = SpawnerManager.Manager.GetComponent<ObjectPool>();
     }
 
     // Update is called once per frame
@@ -24,13 +23,13 @@ public class Spawner : MonoBehaviour
         if (timer > 0.2f + Random.Range(-0.05f, 0.05f))
         {
            
-            Transform trash = _objectPool.GetObject();
+            trash = SpawnerManager.Manager.GetComponent<ObjectPool>().GetObject();
             trash.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             trash.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
             trash.position = transform.position+ new Vector3(Random.Range(-0.1f,0.1f),0,Random.Range(-0.1f,0.1f));
             Material material = Resources.Load<Material>("Materials/Trash/TrashMaterial" + Random.Range(0,4).ToString());
-            trash.localScale = _objectPool.getScale() * Random.Range(0.7f, 1.0f);
+            trash.localScale = SpawnerManager.Manager.GetComponent<ObjectPool>().getScale() * Random.Range(0.7f, 1.0f);
             trash.GetComponent<MeshRenderer>().material = material;
             timer = 0f;
         }
