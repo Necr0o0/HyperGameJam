@@ -4,26 +4,34 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    public List<GameObject> pool;
+    public List<GameObject> poolBalls;
+    public List<GameObject> poolSplash;
+
     private GameObject trash;
+    private GameObject splash;
+
     void Start()
     {
-
         trash = Resources.Load<GameObject>("Prefabs/Trash");
+        splash = Resources.Load<GameObject>("Prefabs/Splash");
+
     }
     GameObject  AddToPool()
     {
         GameObject item = (GameObject)Instantiate(trash,transform.GetChild(0));
+        GameObject itemSplash = (GameObject)Instantiate(splash,transform.GetChild(2));
 
         item.SetActive(false);
-        pool.Add(item);
+        splash.SetActive(false);
+        poolBalls.Add(item);
+        poolSplash.Add(itemSplash);
         return item;
     }
     
     public void TurnOffObject(GameObject gameObject)
     {
-       int index = pool.IndexOf(gameObject);
-       pool[index].gameObject.SetActive(false);
+       int index = poolBalls.IndexOf(gameObject);
+       poolBalls[index].gameObject.SetActive(false);
     }
     public Vector3 getScale()
     {
@@ -32,12 +40,28 @@ public class ObjectPool : MonoBehaviour
 
     public Transform GetObject()
     {
-        for(int i = 0 ;i < pool.Count;i++)
+        for(int i = 0 ;i < poolBalls.Count;i++)
         {
-            if (!pool[i].activeInHierarchy)
+            if (!poolBalls[i].activeInHierarchy)
             { 
-                pool[i].SetActive(true);
-                return pool[i].transform;
+                poolBalls[i].SetActive(true);
+                return poolBalls[i].transform;
+            }
+        }
+        
+        var x = AddToPool();
+        x.SetActive(true);
+        return x.transform;
+    }
+    
+    public Transform GetSplashObject()
+    {
+        for(int i = 0 ;i < poolSplash.Count;i++)
+        {
+            if (!poolSplash[i].activeInHierarchy)
+            { 
+                poolSplash[i].SetActive(true);
+                return poolSplash[i].transform;
             }
         }
         

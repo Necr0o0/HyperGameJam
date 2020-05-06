@@ -13,7 +13,7 @@ public class TrashRenderer : MonoBehaviour
     {
         if (!_renderer.isVisible)
         {
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
     }
 }

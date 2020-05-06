@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class SplashManager : MonoBehaviour
 {
-   public GameObject splash;
    private void OnCollisionEnter(Collision other)
    {
       other.gameObject.SetActive(false);
-      var decal = Instantiate(splash);
+      var decal = SpawnerManager.Manager.GetComponent<ObjectPool>().GetSplashObject();
+
       decal.GetComponent<Renderer>().material.color = other.transform.GetComponent<Renderer>().material.color;
       decal.transform.position = other.transform.position;
    }
