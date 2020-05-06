@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour
     private ObjectPool _objectPool;
     public int trashSpawnMax = 100;
     private int trashCounter = 0;
-    private bool done = false;
+    public bool done = false;
 
     public int materialsCount=4;
     // Start is called before the first frame update

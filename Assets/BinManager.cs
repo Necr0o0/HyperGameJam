@@ -26,8 +26,12 @@ public class BinManager : MonoBehaviour
             counterInsideBox++;
             for (int i = 0; i < BinWalls.Count; i++)
             {
+                BinWalls[i].material.color = _material.color + new Color(0,1,0,0) * counterInsideBox * 0.005f;
+            }
+
+            if (counterInsideBox > 70)
+            {
                 
-                BinWalls[i].material.color = _material.color + new Color(0,1,0,0) * counterInsideBox * 0.01f;
             }
     }
 }
