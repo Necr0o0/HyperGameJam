@@ -285,6 +285,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 861009816}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &622151570 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2354261465436872372, guid: 5492bc9a3572aa848851acc4440f2d69,
+    type: 3}
+  m_PrefabInstance: {fileID: 861009816}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &668368844
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +420,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1269605672}
     m_Modifications:
+    - target: {fileID: 641096203704745093, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438524708871839569, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2293661828752262465, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035502257182187080, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.0001766625
+      objectReference: {fileID: 0}
     - target: {fileID: 4019051153152402255, guid: 5492bc9a3572aa848851acc4440f2d69,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -432,12 +458,12 @@ PrefabInstance:
     - target: {fileID: 4758651351062366016, guid: 5492bc9a3572aa848851acc4440f2d69,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5132938435056493195, guid: 5492bc9a3572aa848851acc4440f2d69,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5132938435056493195, guid: 5492bc9a3572aa848851acc4440f2d69,
         type: 3}
@@ -469,6 +495,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 7060319480156492507, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7171164247324239716, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: BinWalls.Array.data[1]
+      value: 
+      objectReference: {fileID: 622151570}
     - target: {fileID: 8414307435071126094, guid: 5492bc9a3572aa848851acc4440f2d69,
         type: 3}
       propertyPath: m_IsActive
@@ -534,6 +570,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bin
       objectReference: {fileID: 0}
+    - target: {fileID: 8414307435319231068, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8414307436341048446, guid: 5492bc9a3572aa848851acc4440f2d69,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -569,10 +610,15 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8574623921664984237, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8610426353882328761, guid: 5492bc9a3572aa848851acc4440f2d69,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5492bc9a3572aa848851acc4440f2d69, type: 3}
@@ -786,6 +832,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1269605672}
     m_Modifications:
+    - target: {fileID: 3035502257182187080, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.0001766625
+      objectReference: {fileID: 0}
     - target: {fileID: 4019051153152402255, guid: 5492bc9a3572aa848851acc4440f2d69,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
