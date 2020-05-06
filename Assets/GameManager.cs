@@ -7,8 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager gameManager;
     public List<Transform> binQueue;
     public GameObject ground;
+    public Transform cameraPos;
     private Rigidbody trapDoorLeft;
     private Rigidbody trapDoorRight;
     private float cameraHight;
@@ -18,9 +20,10 @@ public class GameManager : MonoBehaviour
     private float distanceBetweenBoxes = 3;
     private void Awake()
     {
+        gameManager = this;
         trapDoorLeft = binQueue[currentBox].Find("Trapdoor/BottomLeft").GetComponent<Rigidbody>();
         trapDoorRight = binQueue[currentBox].Find("Trapdoor/BottomRight").GetComponent<Rigidbody>();
-        cameraHight = Camera.main.transform.position.y- binQueue[0].transform.position.y;
+        cameraHight = cameraPos.position.y- binQueue[0].transform.position.y;
         ground.transform.position = new Vector3(0,-distanceBetweenBoxes*maxBox+ distanceBetweenBoxes*0.5f,0);
         ground.SetActive(true);
     }
@@ -44,6 +47,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetStartCamera()
+    {
+        Camera.main.transform.DOMove(cameraPos.position, 1.5f);
+        Camera.main.transform.DORotate(cameraPos.rotation.eulerAngles, 1.5f);
+
+    }
+
     //method to open the trapdoor
     void OpenDoor()
     {
@@ -55,6 +65,8 @@ public class GameManager : MonoBehaviour
     void MoveCamera()
     {
         Camera.main.transform.DOMoveY( binQueue[currentBox+1].position.y + cameraHight, 1.5f);
+        //Camera.main.transform.DOLookAt( binQueue[currentBox+1].Find("Front").position+ new Vector3( 0,2,0),  1.5f);
+
     }
 
     void NewMainBox()
@@ -74,6 +86,8 @@ public class GameManager : MonoBehaviour
         if (openedDoors >= maxBox)
         {
             var sequence = DOTween.Sequence();
+            sequence.Append(Camera.main.transform.DOLocalMoveZ(-3f,2));
+            //sequence.Join(Camera.main.transform.DOLookAt(ground.transform.position, 1f));
             sequence.AppendInterval(4f);
             sequence.OnComplete(() => { SceneManager.LoadScene(0); });
             sequence.Play();

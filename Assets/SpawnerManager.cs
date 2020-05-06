@@ -22,11 +22,6 @@ public class SpawnerManager : MonoBehaviour
     {
         for (int i = 0; i < spawners.Count; i++)
         {
-            
-            if (spawnedTrash>= 100)
-            {
-                spawners[i].GetComponent<Spawner>().enabled = false;
-            }
             BallsLeft.text = spawnedTrash.ToString();
         }
     }
