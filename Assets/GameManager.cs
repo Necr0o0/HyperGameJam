@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject x = (GameObject)Instantiate(Resources.Load("Prefabs/Bin"),transform.GetChild(1) );
             x.transform.position = binQueue[currentBox+1].position+ new Vector3(0,-distanceBetweenBoxes,0);
-            Material material = new Material(x.GetComponent<Renderer>().material);
+            //Material material = new Material(x.GetComponent<Renderer>().material);
            // x.act
             binQueue.Add(x.transform);
             currentBox++;
