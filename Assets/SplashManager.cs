@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class SplashManager : MonoBehaviour
@@ -12,5 +13,6 @@ public class SplashManager : MonoBehaviour
 
       decal.GetComponent<Renderer>().material.color = other.transform.GetComponent<Renderer>().material.color;
       decal.transform.position = other.transform.position;
+
    }
 }

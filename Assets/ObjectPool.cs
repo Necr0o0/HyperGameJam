@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
@@ -22,6 +23,7 @@ public class ObjectPool : MonoBehaviour
         GameObject itemSplash = (GameObject)Instantiate(splash,transform.GetChild(2));
 
         item.SetActive(false);
+        splash.transform.localEulerAngles = new Vector3(90,Random.Range(0f,360f),0);
         splash.SetActive(false);
         poolBalls.Add(item);
         poolSplash.Add(itemSplash);

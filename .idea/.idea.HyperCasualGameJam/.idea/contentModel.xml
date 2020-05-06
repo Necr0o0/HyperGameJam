@@ -21,6 +21,11 @@
         </e>
         <e p="GameManager.cs" t="Include" />
         <e p="ObjectPool.cs" t="Include" />
+        <e p="Resources" t="Include">
+          <e p="Materials" t="Include">
+            <e p="NewSurfaceShader.shader" t="Include" />
+          </e>
+        </e>
         <e p="Scripts" t="Include">
           <e p="movement.cs" t="Include" />
           <e p="Spawner.cs" t="Include" />
