@@ -82,6 +82,8 @@ public class GameManager : MonoBehaviour
     {
         GameObject x = (GameObject)Instantiate(Resources.Load("Prefabs/Bin"),transform.GetChild(1) );
             x.transform.position = binQueue[currentBox+1].position+ new Vector3(0,-distanceBetweenBoxes,0);
+            Material material = new Material(x.GetComponent<Renderer>().material);
+           // x.act
             binQueue.Add(x.transform);
             currentBox++;
 
@@ -91,7 +93,6 @@ public class GameManager : MonoBehaviour
     {
         trapDoorLeft = binQueue[index].Find("Trapdoor/BottomLeft").GetComponent<Rigidbody>();
         trapDoorRight = binQueue[index].Find("Trapdoor/BottomRight").GetComponent<Rigidbody>();
-        Debug.Log(currentBox.ToString() + "and" + maxBox.ToString());
         if (openedDoors >= maxBox && !levelCompleted)
         {
             var sequence = DOTween.Sequence();
