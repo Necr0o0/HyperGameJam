@@ -6,10 +6,11 @@ using Debug = System.Diagnostics.Debug;
 
 public class BinManager : MonoBehaviour
 {
-    public BoxCollider trashDetector;
     public List<Renderer> BinWalls;
+    public ParticleSystem ParticleSystem;
     private Color defaultColor;
     private Material _material;
+    private bool usedParticle = false;
 
     public float counterInsideBox;
     // Start is called before the first frame update
@@ -29,9 +30,10 @@ public class BinManager : MonoBehaviour
                 BinWalls[i].material.color = _material.color + new Color(0,1,0,0) * counterInsideBox * 0.005f;
             }
 
-            if (counterInsideBox > 70)
+            if (counterInsideBox > 10000 && !usedParticle)
             {
-                
+                ParticleSystem.Play();
+                usedParticle = true;
             }
     }
 }

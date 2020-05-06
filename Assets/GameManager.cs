@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
         Color color = material.color;
         for (int i = 0; i < walls.Count; i++)
         {
-            mainBox.BinWalls[i].material.color = material.color+ new Color(1,1,1,0)  * (  Mathf.Pow(2.0f,(currentBox+1f)/maxBox));
+          // mainBox.BinWalls[i].material.color = material.color+ new Color(1,1,1,0)  * (  Mathf.Pow(2.0f,(currentBox+1f)/maxBox));
         }
     }
 

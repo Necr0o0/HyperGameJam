@@ -15,6 +15,7 @@ public class ObjectPool : MonoBehaviour
     {
         trash = Resources.Load<GameObject>("Prefabs/Trash");
         splash = Resources.Load<GameObject>("Prefabs/Splash");
+        splash.SetActive(false);
 
     }
     GameObject  AddToPool()
@@ -30,11 +31,6 @@ public class ObjectPool : MonoBehaviour
         return item;
     }
     
-    public void TurnOffObject(GameObject gameObject)
-    {
-       int index = poolBalls.IndexOf(gameObject);
-       poolBalls[index].gameObject.SetActive(false);
-    }
     public Vector3 getScale()
     {
         return trash.transform.localScale;

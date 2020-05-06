@@ -8,6 +8,7 @@
 Shader "Custom/Transparent" {
 Properties {
     _MainTex ("Base (RGB) Trans (A)", 2D) = "white" {}
+    _Color ("_Color", color) = (0,0,0,0)
     _Progress("Effect progress", Range(0,1)) = 1
 }
 
@@ -42,6 +43,7 @@ SubShader {
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
+            float4 _Color;
             float _Progress;
 
             v2f vert (appdata_t v)
@@ -60,7 +62,7 @@ SubShader {
                 fixed4 col = tex2D(_MainTex, i.texcoord);
                 float circle  = 1.0f - step(_Progress*0.8f, distance(i.texcoord,float2(0.5f,0.5f)));
                 UNITY_APPLY_FOG(i.fogCoord, col);
-                return col*circle;
+                return col*circle*_Color;
             }
         ENDCG
     }

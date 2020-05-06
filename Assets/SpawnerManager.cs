@@ -10,7 +10,6 @@ public class SpawnerManager : MonoBehaviour
     public TextMeshProUGUI BallsLeft;
     public int spawnedTrash=0;
 
-    private bool set = true;
     // Start is called before the first frame update
     void Start()
     {
