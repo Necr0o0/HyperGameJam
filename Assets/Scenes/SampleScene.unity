@@ -20557,6 +20557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce0913c43c52e540a665566f52bca2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Funnel: {fileID: 5396684497086885155, guid: bf994a958b1c4034cb17764d5087ce72, type: 3}
   binQueue:
   - {fileID: 1404138938}
   - {fileID: 1129000889}

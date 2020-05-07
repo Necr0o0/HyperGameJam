@@ -9,6 +9,7 @@ using UnityEngine.UIElements;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
+    public GameObject Funnel;
     public List<Transform> binQueue;
     public GameObject ground;
     public Transform cameraPos;
@@ -29,7 +30,11 @@ public class GameManager : MonoBehaviour
         trapDoorLeft = binQueue[currentBox].Find("Mesh/BottomLeft").GetComponent<Rigidbody>();
         trapDoorRight = binQueue[currentBox].Find("Mesh/BottomRight").GetComponent<Rigidbody>();
         cameraHight = cameraPos.position.y - binQueue[0].transform.position.y;
-        ground.transform.position = new Vector3(0, -distanceBetweenBoxes * maxBox + distanceBetweenBoxes * 0.5f, 0);
+
+        ground.transform.position = new Vector3(0, -distanceBetweenBoxes * maxBox + distanceBetweenBoxes * 0.5f - 2f, 0);
+        var fun = Instantiate(Funnel);
+        fun.transform.position =     ground.transform.position = new Vector3(binQueue[currentBox].transform.position.x, ground.transform.position.y + 3.5f, binQueue[currentBox].transform.position.x);
+
         ground.SetActive(true);
     }
 
