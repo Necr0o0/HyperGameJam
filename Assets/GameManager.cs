@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour
     private float distanceBetweenBoxes = 3;
     private bool levelCompleted = false;
     private List<List<Renderer>> binMaterials;
+    private ParticleSystem particleSystem;
+    private ParticleSystem.MainModule _particleColor1;
+
+    private int _paletteNumber;
 
     public List<Palette> palettes;
     private Camera _mainCamera;
@@ -42,6 +46,9 @@ public class GameManager : MonoBehaviour
         fun.transform.position  = new Vector3(0, ground.transform.position.y + 1.4f, 1f);
 
         ground.SetActive(true);
+        _particleColor1 = binQueue[0].transform.Find("ParticleSystem/Sparks").GetComponent<ParticleSystem>().main;
+        
+
         
         _mainCamera=Camera.main;
         SetColors();
@@ -72,7 +79,8 @@ public class GameManager : MonoBehaviour
 
     public void SetColors()
     {
-        int paletteNumber = Random.Range(0,2);
+        int paletteNumber = Random.Range(0,4);
+        _paletteNumber = paletteNumber;
         Debug.Log("paletteNumber:" + paletteNumber);
         
         var ball1Materia2 = Resources.Load<Material>("Materials/Trash/TrashMaterial1");
@@ -85,8 +93,15 @@ public class GameManager : MonoBehaviour
         _mainCamera.backgroundColor = palettes[paletteNumber].backgroundColor;
         boxMaterial.color = palettes[paletteNumber].boxColor;
         ball1Material.color = palettes[paletteNumber].ball1Color;
-        ball1Materia2.color = palettes[paletteNumber].ball2Color;
+        ball1Materia2.color = palettes[paletteNumber].ball2Color; 
+        SetParticleColors();
         
+    }
+
+    public void SetParticleColors()
+    {
+        _particleColor1.startColor = new ParticleSystem.MinMaxGradient(palettes[_paletteNumber].ball1Color,palettes[_paletteNumber].ball2Color);
+
     }
     
     public void SetStartCamera()
@@ -123,8 +138,10 @@ public class GameManager : MonoBehaviour
         Transform x = SpawnerManager.Manager.GetComponent<ObjectPool>().GetBinObject();
         x.position = binQueue[currentBox + 1].position + new Vector3(0, -distanceBetweenBoxes, 0);
         SetNewMeshMaterial(x.GetComponent<BinManager>());
+        _particleColor1 = x.Find("ParticleSystem/Sparks").GetComponent<ParticleSystem>().main;
         binQueue.Add(x.transform);
         currentBox++;
+        SetParticleColors();
     }
 
     void SetNewMeshMaterial(BinManager mainBox)
