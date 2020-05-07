@@ -6,15 +6,21 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     public List<GameObject> poolBalls;
+    public List<GameObject> poolBins;
+
     public List<GameObject> poolSplash;
 
     private GameObject trash;
     private GameObject splash;
+    private GameObject bin;
+
 
     void Start()
     {
         trash = Resources.Load<GameObject>("Prefabs/Trash");
         splash = Resources.Load<GameObject>("Prefabs/Splash");
+        bin = Resources.Load<GameObject>("Prefabs/Bin");
+
         splash.SetActive(false);
 
     }
@@ -36,7 +42,7 @@ public class ObjectPool : MonoBehaviour
         return trash.transform.localScale;
     }
 
-    public Transform GetObject()
+    public Transform GetBallObject()
     {
         for(int i = 0 ;i < poolBalls.Count;i++)
         {
@@ -48,6 +54,22 @@ public class ObjectPool : MonoBehaviour
         }
         
         var x = AddToPool();
+        x.SetActive(true);
+        return x.transform;
+    }
+    
+    public Transform GetBinObject()
+    {
+        for(int i = 0 ;i < poolBins.Count;i++)
+        {
+            if (!poolBins[i].activeInHierarchy)
+            { 
+                poolBins[i].SetActive(true);
+                return poolBins[i].transform;
+            }
+        }
+
+        var x = Instantiate(bin, transform.GetChild(1));
         x.SetActive(true);
         return x.transform;
     }

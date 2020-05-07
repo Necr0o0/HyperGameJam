@@ -36,7 +36,7 @@ public class Spawner : MonoBehaviour
 
     void SpawnTrash()
     {
-        trash = SpawnerManager.Manager.GetComponent<ObjectPool>().GetObject();
+        trash = SpawnerManager.Manager.GetComponent<ObjectPool>().GetBallObject();
         trash.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         trash.GetComponent<Rigidbody>().velocity = Vector3.zero;
 

@@ -88,8 +88,8 @@ public class GameManager : MonoBehaviour
 
     void SetNewMainBox()
     {
-        GameObject x = (GameObject) Instantiate(Resources.Load("Prefabs/Bin"), transform.GetChild(1));
-        x.transform.position = binQueue[currentBox + 1].position + new Vector3(0, -distanceBetweenBoxes, 0);
+        Transform x = SpawnerManager.Manager.GetComponent<ObjectPool>().GetBinObject();
+        x.position = binQueue[currentBox + 1].position + new Vector3(0, -distanceBetweenBoxes, 0);
         SetNewMeshMaterial(x.GetComponent<BinManager>());
         binQueue.Add(x.transform);
         currentBox++;
