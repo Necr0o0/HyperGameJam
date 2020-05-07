@@ -21,6 +21,7 @@
         </e>
         <e p="FunnelEndColissionManager.cs" t="Include" />
         <e p="GameManager.cs" t="Include" />
+        <e p="gasd.cs" t="Include" />
         <e p="GroundCollisionManager.cs" t="Include" />
         <e p="ObjectPool.cs" t="Include" />
         <e p="Resources" t="Include">
