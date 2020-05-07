@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
-    public GameObject Funnel;
+    public GameObject funnel;
     public List<Transform> binQueue;
     public GameObject ground;
     public Transform cameraPos;
@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     private Rigidbody trapDoorLeft;
     private Rigidbody trapDoorRight;
     private float cameraHight;
-    private int currentBox = 0;
+    public int currentBox = 0;
     private int openedDoors = 0;
     private int maxBox = 5;
     private float distanceBetweenBoxes = 3;
@@ -31,9 +31,9 @@ public class GameManager : MonoBehaviour
         trapDoorRight = binQueue[currentBox].Find("Mesh/BottomRight").GetComponent<Rigidbody>();
         cameraHight = cameraPos.position.y - binQueue[0].transform.position.y;
 
-        ground.transform.position = new Vector3(0, -distanceBetweenBoxes * maxBox + distanceBetweenBoxes * 0.5f - 2f, 0);
-        var fun = Instantiate(Funnel);
-        fun.transform.position =     ground.transform.position = new Vector3(binQueue[currentBox].transform.position.x, ground.transform.position.y + 3.5f, binQueue[currentBox].transform.position.x);
+        ground.transform.position = new Vector3(0, -distanceBetweenBoxes * maxBox + distanceBetweenBoxes * 0.5f , 0);
+        var fun = Instantiate(funnel,transform.GetChild(1));
+        fun.transform.position  = new Vector3(0, ground.transform.position.y + 0.5f, 1f);
 
         ground.SetActive(true);
     }
@@ -66,7 +66,11 @@ public class GameManager : MonoBehaviour
         var sequence = DOTween.Sequence();
         sequence.Append(Camera.main.transform.DOMove(cameraPos.position, 1.5f));
         sequence.Join(Camera.main.transform.DORotate(cameraPos.rotation.eulerAngles, 1.5f));
-        sequence.OnComplete(() => { readyToPlay = true; });
+        sequence.OnComplete(() =>
+        {
+            readyToPlay = true;
+            Camera.main.transform.position = cameraPos.transform.position;
+        });
         sequence.Play();
 
     }
@@ -113,11 +117,31 @@ public class GameManager : MonoBehaviour
         trapDoorRight = binQueue[index].Find("Mesh/BottomRight").GetComponent<Rigidbody>();
         if (openedDoors >= maxBox && !levelCompleted)
         {
+            
             var sequence = DOTween.Sequence();
-            sequence.Append(Camera.main.transform.DOLocalMoveZ(-3f,2));
+            //sequence.Append(Camera.main.transform.DOLocalMoveZ(-1f,2));
             //sequence.Join(Camera.main.transform.DOLookAt(ground.transform.position, 1f));
             sequence.AppendInterval(2f);
-            sequence.OnComplete(() => { SceneManager.LoadScene(0); });
+           
+            sequence.OnComplete(() =>
+            {
+                /*
+                var x = Instantiate(Resources.Load<Transform>("Prefabs/Trash"),Camera.main.transform);
+                x.position = Camera.main.transform.position + new Vector3(0,-0.5f,0.25f);
+                x.gameObject.SetActive(true);
+                x.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.Discrete;
+                x.GetComponent<Rigidbody>().isKinematic = true;
+                var y = SpawnerManager.Manager.GetComponent<ObjectPool>().GetSplashObject();
+                var angle = new Quaternion();
+                angle = Quaternion.Euler(30, 0, 0);
+                y.transform.localEulerAngles = new Vector3(30,0,0);
+                y.GetComponent<SplashManager>().TriggerAnimation(x);
+                */
+                var sequence2 = DOTween.Sequence();
+                sequence2.AppendInterval(2f);
+                sequence2.OnComplete(() => { SceneManager.LoadScene(0);});
+
+            });
             sequence.Play();
             levelCompleted = true;
         }

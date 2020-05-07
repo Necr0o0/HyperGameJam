@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Debug = System.Diagnostics.Debug;
 
 public class BinManager : MonoBehaviour
@@ -32,8 +33,14 @@ public class BinManager : MonoBehaviour
 
             if (counterInsideBox > 10 && !usedParticle)
             {
+                if (GameManager.gameManager.currentBox == 0)
+                {
+                    usedParticle = true;
+                    return;
+                }
                 ParticleSystem.Play();
                 usedParticle = true;
             }
+        
     }
 }
