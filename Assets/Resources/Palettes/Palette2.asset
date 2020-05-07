@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1409bf46cd65558428a35d78f9ab7e50, type: 3}
+  m_Name: Palette2
+  m_EditorClassIdentifier: 
+  boxColor: {r: 0.8156863, g: 1, b: 0.4117647, a: 0}
+  funnelColor: {r: 0.88235295, g: 0.95686275, b: 0.5686275, a: 0}
+  backgroundColor: {r: 0.38039216, g: 0.8862745, b: 0.85882354, a: 0}
+  groundColor: {r: 0.6431373, g: 0.8156863, b: 0.83137256, a: 0}
+  ball1Color: {r: 0.9372549, g: 0.50980395, b: 0.27058825, a: 0}
+  ball2Color: {r: 0.84705883, g: 0.69803923, b: 0.54509807, a: 0}
