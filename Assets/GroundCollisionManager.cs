@@ -19,9 +19,11 @@ public class GroundCollisionManager : MonoBehaviour
 
    private void OnCollisionEnter(Collision other)
    {
-      var decal = SpawnerManager.Manager.GetComponent<ObjectPool>().GetSplashObject();
-      decal.GetComponent<SplashManager>().TriggerAnimation(other.transform);
-      
-
+      if(other.transform.CompareTag("Trash"))
+      {
+         var decal = SpawnerManager.Manager.GetComponent<ObjectPool>().GetSplashObject();
+         decal.GetComponent<SplashManager>().TriggerAnimation(other.transform);
+      }
+     
    }
 }
