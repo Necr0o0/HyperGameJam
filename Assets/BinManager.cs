@@ -30,7 +30,7 @@ public class BinManager : MonoBehaviour
                 BinWalls[i].material.color = _material.color + new Color(0,1,0,0) * counterInsideBox * 0.005f;
             }
 
-            if (counterInsideBox > 10000 && !usedParticle)
+            if (counterInsideBox > 10 && !usedParticle)
             {
                 ParticleSystem.Play();
                 usedParticle = true;
