@@ -11,7 +11,5 @@ public class TrashDetector : MonoBehaviour
             SpawnerManager.Manager.spawnedTrash++;
             bin.ChangeColor();
         }
-           
-        
     }
 }
