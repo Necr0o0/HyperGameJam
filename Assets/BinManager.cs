@@ -17,8 +17,8 @@ public class BinManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        defaultColor = BinWalls[0].material.color;
-        _material = new Material(BinWalls[0].material);
+        defaultColor = Resources.Load<Material>("Materials/Box").color;
+        _material = new Material( Resources.Load<Material>("Materials/Box"));
     }
 
     // Update is called once per frame

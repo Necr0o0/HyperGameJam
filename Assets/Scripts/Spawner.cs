@@ -41,7 +41,7 @@ public class Spawner : MonoBehaviour
         trash.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
         trash.position = transform.position+ new Vector3(Random.Range(-0.4f,0.4f),Random.Range(0f,0.8f),Random.Range(-0.4f,0.4f));
-        Material material = Resources.Load<Material>("Materials/Trash/TrashMaterial" + Random.Range(0,4).ToString());
+        Material material = Resources.Load<Material>("Materials/Trash/TrashMaterial" + Random.Range(0,2).ToString());
         trash.localScale = SpawnerManager.Manager.GetComponent<ObjectPool>().getScale() * Random.Range(0.7f, 1.0f);
         trash.GetComponent<MeshRenderer>().material = material;
         trashCounter++;

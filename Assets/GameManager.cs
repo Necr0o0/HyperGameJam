@@ -5,9 +5,11 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
+    
     public static GameManager gameManager;
     public GameObject funnel;
     public List<Transform> binQueue;
@@ -24,6 +26,10 @@ public class GameManager : MonoBehaviour
     private bool levelCompleted = false;
     private List<List<Renderer>> binMaterials;
 
+    public List<Palette> palettes;
+    private Camera _mainCamera;
+    
+
     private void Awake()
     {
         gameManager = this;
@@ -36,6 +42,9 @@ public class GameManager : MonoBehaviour
         fun.transform.position  = new Vector3(0, ground.transform.position.y + 0.5f, 1f);
 
         ground.SetActive(true);
+        
+        _mainCamera=Camera.main;
+        SetColors();
     }
 
     private void Update()
@@ -61,6 +70,25 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void SetColors()
+    {
+        int paletteNumber = Random.Range(0,2);
+        Debug.Log("paletteNumber:" + paletteNumber);
+        
+        var ball1Materia2 = Resources.Load<Material>("Materials/Trash/TrashMaterial1");
+        var ball1Material = Resources.Load<Material>("Materials/Trash/TrashMaterial0");
+        var boxMaterial = Resources.Load<Material>("Materials/Box");
+
+        
+        ground.GetComponent<Renderer>().sharedMaterial.color = palettes[paletteNumber].groundColor;
+        funnel.GetComponent<Renderer>().sharedMaterial.color = palettes[paletteNumber].funnelColor;
+        _mainCamera.backgroundColor = palettes[paletteNumber].backgroundColor;
+        boxMaterial.color = palettes[paletteNumber].boxColor;
+        ball1Material.color = palettes[paletteNumber].ball1Color;
+        ball1Materia2.color = palettes[paletteNumber].ball2Color;
+        
+    }
+    
     public void SetStartCamera()
     {
         var sequence = DOTween.Sequence();

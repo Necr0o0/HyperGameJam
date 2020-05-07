@@ -17829,6 +17829,9 @@ MonoBehaviour:
   cameraPos: {fileID: 1913560219}
   readyToPlay: 0
   currentBox: 0
+  palettes:
+  - {fileID: 11400000, guid: 739ccf7a7f17cc8459530024f4246fb0, type: 2}
+  - {fileID: 11400000, guid: 3fc70c1e54fa5954799147112a63d11a, type: 2}
 --- !u!1001 &2014238449
 PrefabInstance:
   m_ObjectHideFlags: 0
