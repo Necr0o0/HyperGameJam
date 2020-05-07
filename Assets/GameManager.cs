@@ -41,9 +41,9 @@ public class GameManager : MonoBehaviour
         trapDoorRight = binQueue[currentBox].Find("Mesh/BottomRight").GetComponent<Rigidbody>();
         cameraHight = cameraPos.position.y - binQueue[0].transform.position.y;
 
-        ground.transform.position = new Vector3(0, -distanceBetweenBoxes * maxBox + distanceBetweenBoxes * 0.5f , 0);
+        ground.transform.position = new Vector3(0, -distanceBetweenBoxes * maxBox + distanceBetweenBoxes * 0.5f - 1.5f , 0);
         var fun = Instantiate(funnel,transform.GetChild(1));
-        fun.transform.position  = new Vector3(0, ground.transform.position.y + 0.5f, 1f);
+        fun.transform.position  = new Vector3(0, ground.transform.position.y + 1.4f, 1f);
 
         ground.SetActive(true);
         _particleColor1 = binQueue[0].transform.Find("ParticleSystem/Sparks").GetComponent<ParticleSystem>().main;
