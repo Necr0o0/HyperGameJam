@@ -12,7 +12,7 @@ public class TrashDetector : MonoBehaviour
         if (collider.CompareTag("Trash") && !hitted.Contains(collider))
         {
             SpawnerManager.Manager.spawnedTrash++;
-            bin.ChangeColor();
+            bin.ChangeColor(collider.GetComponent<Renderer>().material.color);
             hitted.Add(collider);
         }
     }

@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer > 0.02f + Random.Range(-0.05f, 0.05f) && trashCounter < trashSpawnMax) 
+        if (timer > 0.02f + Random.Range(-0.03f, 0.03f) && trashCounter < trashSpawnMax) 
         {
             SpawnTrash();
         }

@@ -7,7 +7,6 @@ public class ObjectPool : MonoBehaviour
 {
     public List<GameObject> poolBalls;
     public List<GameObject> poolBins;
-
     public List<GameObject> poolSplash;
 
     private GameObject trash;
@@ -53,7 +52,7 @@ public class ObjectPool : MonoBehaviour
             }
         }
         
-        var x = AddToPool();
+        var x = Instantiate(trash, transform.GetChild(0));
         x.SetActive(true);
         return x.transform;
     }
@@ -70,13 +69,15 @@ public class ObjectPool : MonoBehaviour
         }
 
         var x = Instantiate(bin, transform.GetChild(1));
+        poolBins.Add(x);
         x.SetActive(true);
         return x.transform;
     }
     
     public Transform GetSplashObject()
     {
-        for(int i = 0 ;i < poolSplash.Count;i++)
+        Debug.Log(poolSplash.Count);
+        for(int i = 0;i < poolSplash.Count;i++)
         {
             if (!poolSplash[i].activeInHierarchy)
             { 
@@ -85,8 +86,9 @@ public class ObjectPool : MonoBehaviour
             }
         }
         
-        var x = AddToPool();
-        x.SetActive(true);
+        var x = Instantiate(splash, transform.GetChild(2));
+        x.SetActive(false);
+        poolSplash.Add(x);
         return x.transform;
     }
 }

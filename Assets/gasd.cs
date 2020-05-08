@@ -15,15 +15,15 @@ public class gasd : MonoBehaviour
       
     }
 
-    /*
+    
     private void OnCollisionEnter(Collision other)
     {
-        if(other.transform.CompareTag("Trash"))
+        if (other.contactCount < 2)
         {
-            Debug.Log(other);
+            Debug.Log(other.transform.name);
             var decal = SpawnerManager.Manager.GetComponent<ObjectPool>().GetSplashObject();
+            Debug.Log(decal.name);
             decal.GetComponent<SplashManager>().TriggerAnimation(other.transform);
         }
-     
-    }*/
+    }
 }

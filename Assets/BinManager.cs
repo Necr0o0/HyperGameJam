@@ -11,6 +11,7 @@ public class BinManager : MonoBehaviour
 {
     public List<Renderer> BinWalls;
     public ParticleSystem ParticleSystem;
+    private float orginalSize;
     public TextMeshPro ballsText;
     private Color defaultColor;
     private Material _material;
@@ -23,23 +24,23 @@ public class BinManager : MonoBehaviour
         defaultColor = BinWalls[0].material.color;
         _material = new Material(BinWalls[0].material);
         ballsText.text = "0";
+        orginalSize = ballsText.fontSize;
 
     }
 
     // Update is called once per frame
-    public void ChangeColor()
+    public void ChangeColor(Color color)
     {
             counterInsideBox++;
             ballsText.text = counterInsideBox.ToString();
-            var seqence = DOTween.Sequence();
-            Vector3 scale = ballsText.transform.localScale;
-            //seqence.Append(ballsText.transform.DOScale(scale*1.1f, 0.1f));
-            //seqence.Append(ballsText.transform.DOScale(1, 0.1f));
+            var sequence = DOTween.Sequence();
+            sequence.Append(DOTween.To(() => ballsText.fontSize, x => ballsText.fontSize = x, ballsText.fontSize + 7f, 0.1f));
+            sequence.Join(DOTween.To(() => ballsText.fontSize, x => ballsText.fontSize = x, orginalSize, 0.8f));
 
             
             for (int i = 0; i < BinWalls.Count; i++)
             {
-                BinWalls[i].material.color +=   new Color(1,1,1,0) * counterInsideBox * 0.0001f;
+                BinWalls[i].material.color = Color.Lerp(BinWalls[i].material.color, new Color(color.r,color.g,color.b,  BinWalls[i].material.color.a), counterInsideBox / 2000f);
             }
 
             if (counterInsideBox > 10 && !usedParticle)

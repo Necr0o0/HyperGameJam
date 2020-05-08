@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     private float distanceBetweenBoxes = 3;
     private bool levelCompleted = false;
     private List<List<Renderer>> binMaterials;
-    
+    private ParticleSystem _particleSystem;
 
     private int _paletteNumber;
 
@@ -39,18 +39,20 @@ public class GameManager : MonoBehaviour
         trapDoorLeft = binQueue[currentBox].Find("Mesh/BottomLeft").GetComponent<Rigidbody>();
         trapDoorRight = binQueue[currentBox].Find("Mesh/BottomRight").GetComponent<Rigidbody>();
         cameraHight = cameraPos.position.y - binQueue[0].transform.position.y;
-
-        ground.transform.position = new Vector3(0, -distanceBetweenBoxes * maxBox + distanceBetweenBoxes * 0.5f - 1.5f , 0);
-        var fun = Instantiate(funnel,transform.GetChild(1));
-        fun.transform.position  = new Vector3(0, ground.transform.position.y + 1.4f, 1f);
-
+       
+        
         ground.SetActive(true);
-        
-        
-
-        
         _mainCamera=Camera.main;
+
         SetColors();
+
+        _particleSystem = binQueue[1].Find("ParticleSystem/Sparks").GetComponent<ParticleSystem>();
+        var main = _particleSystem.main;
+        main.startColor = new ParticleSystem.MinMaxGradient(palettes[_paletteNumber].ball1Color, palettes[_paletteNumber].ball2Color);
+        ground.transform.position = new Vector3(0, -distanceBetweenBoxes * maxBox + distanceBetweenBoxes * 0.5f - 1.5f , 0);
+        var fun = Instantiate(funnel,transform);
+        fun.transform.position  = new Vector3(0, ground.transform.position.y + 1.4f, 1f);
+        
     }
 
     private void Update()
@@ -134,6 +136,10 @@ public class GameManager : MonoBehaviour
         x.position = binQueue[currentBox + 1].position + new Vector3(0, -distanceBetweenBoxes, 0);
         SetNewMeshMaterial(x.GetComponent<BinManager>());
         
+        
+        _particleSystem = x.Find("ParticleSystem/Sparks").GetComponent<ParticleSystem>();
+        var main = _particleSystem.main;
+        main.startColor = new ParticleSystem.MinMaxGradient(palettes[_paletteNumber].ball1Color, palettes[_paletteNumber].ball2Color);
         binQueue.Add(x.transform);
         currentBox++;
         
@@ -178,7 +184,7 @@ public class GameManager : MonoBehaviour
                 y.GetComponent<SplashManager>().TriggerAnimation(x);
                 */
                 var sequence2 = DOTween.Sequence();
-                sequence2.AppendInterval(2f);
+                sequence2.AppendInterval(4f);
                 sequence2.OnComplete(() => { SceneManager.LoadScene(0);});
 
             });
