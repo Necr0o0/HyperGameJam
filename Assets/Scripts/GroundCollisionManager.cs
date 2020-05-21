@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gasd : MonoBehaviour
+public class GroundCollisionManager : MonoBehaviour
 {
     private float timer;
     private float value= 0.0f;

@@ -14,7 +14,7 @@ public class ObjectPool : MonoBehaviour
     private GameObject bin;
 
 
-    void Start()
+    void Awake()
     {
         trash = Resources.Load<GameObject>("Prefabs/Trash");
         splash = Resources.Load<GameObject>("Prefabs/Splash");

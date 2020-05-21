@@ -104,12 +104,12 @@ public class GameManager : MonoBehaviour
     public void SetStartCamera()
     {
         var sequence = DOTween.Sequence();
-        sequence.Append(Camera.main.transform.DOMove(cameraPos.position, 1.5f));
-        sequence.Join(Camera.main.transform.DORotate(cameraPos.rotation.eulerAngles, 1.5f));
+        sequence.Append(_mainCamera.transform.DOMove(cameraPos.position, 1.5f));
+        sequence.Join(_mainCamera.transform.DORotate(cameraPos.rotation.eulerAngles, 1.5f));
         sequence.OnComplete(() =>
         {
             readyToPlay = true;
-            Camera.main.transform.position = cameraPos.transform.position;
+            _mainCamera.transform.position = cameraPos.transform.position;
         });
         sequence.Play();
 
@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
 
     void MoveCamera()
     {
-        Camera.main.transform.DOMoveY(binQueue[currentBox + 1].position.y + cameraHight, 1.5f);
+        _mainCamera.transform.DOMoveY(binQueue[currentBox + 1].position.y + cameraHight, 1.5f);
         //Camera.main.transform.DOLookAt( binQueue[currentBox+1].Find("Front").position+ new Vector3( 0,2,0),  1.5f);
 
     }
