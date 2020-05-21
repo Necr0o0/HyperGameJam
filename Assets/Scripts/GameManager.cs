@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     {
         if (readyToPlay)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
             {
 
 
@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
            
             sequence.OnComplete(() =>
             {
-                /*
+                /*  SPLASH ON MIDDLE
                 var x = Instantiate(Resources.Load<Transform>("Prefabs/Trash"),Camera.main.transform);
                 x.position = Camera.main.transform.position + new Vector3(0,-0.5f,0.25f);
                 x.gameObject.SetActive(true);
