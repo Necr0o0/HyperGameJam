@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
 
     void SetNewMainBox()
     {
-        Transform x = SpawnerManager.Manager.GetComponent<ObjectPool>().GetBinObject();
+        Transform x = ObjectPool.Instance.GetBinObject();
         x.position = binQueue[currentBox + 1].position + new Vector3(0, -distanceBetweenBoxes, 0);
         SetNewMeshMaterial(x.GetComponent<BinManager>());
         

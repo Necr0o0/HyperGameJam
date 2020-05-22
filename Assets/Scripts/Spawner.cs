@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _objectPool = SpawnerManager.Manager.GetComponent<ObjectPool>();
+        _objectPool = ObjectPool.Instance;
         _trashRigidbody = trash.GetComponent<Rigidbody>();
          timer = 0.0f;
          

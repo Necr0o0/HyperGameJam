@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
+    [HideInInspector] public static ObjectPool Instance;
+    
     public List<GameObject> poolBalls;
     public List<GameObject> poolBins;
     public List<GameObject> poolSplash;
@@ -16,6 +18,7 @@ public class ObjectPool : MonoBehaviour
 
     void Awake()
     {
+        Instance = this;
         trash = Resources.Load<GameObject>("Prefabs/Trash");
         splash = Resources.Load<GameObject>("Prefabs/Splash");
         bin = Resources.Load<GameObject>("Prefabs/Bin");
@@ -76,7 +79,6 @@ public class ObjectPool : MonoBehaviour
     
     public Transform GetSplashObject()
     {
-        Debug.Log(poolSplash.Count);
         for(int i = 0;i < poolSplash.Count;i++)
         {
             if (!poolSplash[i].activeInHierarchy)

@@ -26,7 +26,7 @@ public class SplashManager : MonoBehaviour
     public void TriggerAnimation(Transform other)
     {
         var _color = other.GetComponent<Renderer>().material.color;
-        var decal = SpawnerManager.Manager.GetComponent<ObjectPool>().GetSplashObject();
+        var decal = ObjectPool.Instance.GetSplashObject();
         _renderer = decal.GetComponent<Renderer>();
        
 
@@ -38,6 +38,8 @@ public class SplashManager : MonoBehaviour
         _materialPropertyBlock.SetColor("_Color",_color);
         timer = 0.0f;
         decal.transform.position = other.transform.position;
+       // decal.transform.rotation = other.rotation;
+
         other.gameObject.SetActive(false);
 
         start = true;

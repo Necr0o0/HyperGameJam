@@ -18,11 +18,9 @@ public class GroundCollisionManager : MonoBehaviour
     
     private void OnCollisionEnter(Collision other)
     {
-        if (other.contactCount < 2)
+        if (other.contactCount < 2 && other.transform.CompareTag("Trash"))
         {
-            Debug.Log(other.transform.name);
-            var decal = SpawnerManager.Manager.GetComponent<ObjectPool>().GetSplashObject();
-            Debug.Log(decal.name);
+            var decal = ObjectPool.Instance.GetSplashObject();
             decal.GetComponent<SplashManager>().TriggerAnimation(other.transform);
         }
     }
