@@ -35,7 +35,7 @@ Material:
     - _DS: 0
     - _DetailTex: 0
     - _Outl: 1
-    - _Outline: 1.31
+    - _Outline: 3.56
     - _TintColor: 1
     - _TrOp: 0
     - _Trans: 0
@@ -43,4 +43,4 @@ Material:
     m_Colors:
     - _Asymmetry: {r: 0, g: 0.25, b: 0.5, a: 0}
     - _Color: {r: 0.975, g: 0.1131, b: 0.1131, a: 1}
-    - _OutlineColor: {r: 0, g: 0.040882874, b: 0.312, a: 1}
+    - _OutlineColor: {r: 0.319, g: 0.03706224, b: 0.03706224, a: 1}
