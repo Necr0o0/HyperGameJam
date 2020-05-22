@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public GameObject funnel;
     public List<Transform> binQueue;
     public GameObject ground;
+    public GameObject sky;
+
     public Transform cameraPos;
     public bool readyToPlay = false;
     private Rigidbody trapDoorLeft;
@@ -84,17 +86,17 @@ public class GameManager : MonoBehaviour
         _paletteNumber = paletteNumber;
         Debug.Log("paletteNumber:" + paletteNumber);
         
-        var ball1Materia2 = Resources.Load<Material>("Materials/Trash/TrashMaterial1");
+        var ball1Material2 = Resources.Load<Material>("Materials/Trash/TrashMaterial1");
         var ball1Material = Resources.Load<Material>("Materials/Trash/TrashMaterial0");
         var boxMaterial = Resources.Load<Material>("Materials/Box");
 
         
         ground.GetComponent<Renderer>().sharedMaterial.color = palettes[paletteNumber].groundColor;
         funnel.GetComponent<Renderer>().sharedMaterial.color = palettes[paletteNumber].funnelColor;
-        _mainCamera.backgroundColor = palettes[paletteNumber].backgroundColor;
+        sky.GetComponent<Renderer>().sharedMaterial.color = palettes[paletteNumber].backgroundColor;
         boxMaterial.color = palettes[paletteNumber].boxColor;
         ball1Material.color = palettes[paletteNumber].ball1Color;
-        ball1Materia2.color = palettes[paletteNumber].ball2Color; 
+        ball1Material2.color = palettes[paletteNumber].ball2Color; 
        
         
     }
