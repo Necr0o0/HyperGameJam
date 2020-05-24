@@ -44,10 +44,20 @@ public class Spawner : MonoBehaviour
         _trashRigidbody.angularVelocity = Vector3.zero;
         _trashRigidbody.velocity = Vector3.zero;
 
+        string random = Random.Range(0, 2).ToString();
         trash.position = transform.position+ new Vector3(Random.Range(-0.4f,0.4f),Random.Range(0f,0.8f),Random.Range(-0.4f,0.4f));
-        Material material = Resources.Load<Material>("Materials/Trash/TrashMaterial" + Random.Range(0,2).ToString());
-        trash.localScale =  _objectPool.getScale() * Random.Range(0.7f, 1.0f);
+        Material material = Resources.Load<Material>("Materials/Trash/TrashMaterial" + random);
+        Material materialTrace = Resources.Load<Material>("MaterialsNoShader/Trash/TrashMaterial" + random);
+
+        trash.localScale =  _objectPool.getScale() * Random.Range(0.5f, 1.1f);
+        if (trash.localScale.x > _objectPool.getScale().x * 0.85f)
+        {
+            trash.GetChild(0).gameObject.SetActive(true);
+        }
         trash.GetComponent<MeshRenderer>().material = material;
+        trash.GetChild(0).GetComponent<ParticleSystemRenderer>().material = materialTrace;
+        trash.GetChild(0).GetComponent<ParticleSystemRenderer>().trailMaterial = materialTrace;
+
         trashCounter++;
         timer = 0f;
     }

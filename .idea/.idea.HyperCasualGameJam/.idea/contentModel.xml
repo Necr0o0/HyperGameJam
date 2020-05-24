@@ -22,10 +22,11 @@
           <e p="Materials" t="Include">
             <e p="NewSurfaceShader.shader" t="Include" />
           </e>
-          <e p="Materials NoShader" t="Include">
+          <e p="MaterialsNoShader" t="Include">
             <e p="NewSurfaceShader.shader" t="Include" />
           </e>
         </e>
+        <e p="RotateObject.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="BinManager.cs" t="Include" />
           <e p="FunnelEndColissionManager.cs" t="Include" />
@@ -36,11 +37,9 @@
           <e p="ObjectPool.cs" t="Include" />
           <e p="Palette.cs" t="Include" />
           <e p="Spawner.cs" t="Include" />
-          <e p="SpawnerManager.cs" t="Include" />
           <e p="SplashManager.cs" t="Include" />
           <e p="Trapdoor.cs" t="Include" />
           <e p="TrashDetector.cs" t="Include" />
-          <e p="TrashRenderer.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">
