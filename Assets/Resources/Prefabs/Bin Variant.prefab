@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5013822185017655940
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2030091832889426645, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.02458654
+      objectReference: {fileID: 0}
+    - target: {fileID: 2030091832889426645, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.00551564
+      objectReference: {fileID: 0}
+    - target: {fileID: 2293661828752262465, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 7060319480156492507, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 7967399314624965790, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414307435311302802, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414307435311302802, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414307435311302802, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414307435311302802, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414307435311302802, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414307435311302802, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.37217802
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414307435311302802, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9281614
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414307435311302802, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414307435311302802, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414307435311302802, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414307435311302802, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -43.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414307435311302812, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_Name
+      value: Bin Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8721466069104944226, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.030461945
+      objectReference: {fileID: 0}
+    - target: {fileID: 8721466069104944226, guid: 5492bc9a3572aa848851acc4440f2d69,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.005588618
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5492bc9a3572aa848851acc4440f2d69, type: 3}

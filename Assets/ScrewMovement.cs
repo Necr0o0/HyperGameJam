@@ -5,12 +5,13 @@ using UnityEngine;
 using UnityEngine.Timeline;
 using Random = UnityEngine.Random;
 
-public class movement : MonoBehaviour
+public class ScrewMovement : MonoBehaviour
 {
     private Vector3 pos;
     private float seed;
     private bool _move;
     private bool _rotate;
+    public float speed = 100.0f;
     private void Awake()
     {
         seed = Random.Range(-Mathf.PI, Mathf.PI);
@@ -18,8 +19,8 @@ public class movement : MonoBehaviour
         if (Random.value > 0.1)
             _move = true;
 
-        if (Random.value > 0.5)
-            _rotate = true;
+      
+        _rotate = true;
     }
 
     void Update()
@@ -27,7 +28,7 @@ public class movement : MonoBehaviour
         if(_move)
             MoveLeftAndRight();
         if(_rotate)
-             Rotate();
+            Rotate();
     }
 
     private void MoveLeftAndRight()
@@ -40,7 +41,7 @@ public class movement : MonoBehaviour
     private void Rotate()
     {
         var angle = transform.localRotation.eulerAngles;
-        angle.z = Mathf.Sin(Time.time + seed) * 10f - 2.0f;
+        angle.z = (Time.time + seed) * speed ;
         transform.localRotation = Quaternion.Euler(angle);
     }
 }

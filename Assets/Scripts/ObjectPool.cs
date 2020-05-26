@@ -26,18 +26,7 @@ public class ObjectPool : MonoBehaviour
         splash.SetActive(false);
 
     }
-    GameObject  AddToPool()
-    {
-        GameObject item = (GameObject)Instantiate(trash,transform.GetChild(0));
-        GameObject itemSplash = (GameObject)Instantiate(splash,transform.GetChild(2));
 
-        item.SetActive(false);
-        splash.transform.localEulerAngles = new Vector3(90,Random.Range(0f,360f),0);
-        splash.SetActive(false);
-        poolBalls.Add(item);
-        poolSplash.Add(itemSplash);
-        return item;
-    }
     
     public Vector3 getScale()
     {

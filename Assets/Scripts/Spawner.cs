@@ -49,7 +49,7 @@ public class Spawner : MonoBehaviour
         Material material = Resources.Load<Material>("Materials/Trash/TrashMaterial" + random);
         Material materialTrace = Resources.Load<Material>("MaterialsNoShader/Trash/TrashMaterial" + random);
 
-        trash.localScale =  _objectPool.getScale() * Random.Range(0.5f, 1.1f);
+        trash.localScale =  _objectPool.getScale() * Random.Range(0.7f, 1.1f);
         if (trash.localScale.x > _objectPool.getScale().x * 0.85f)
         {
             trash.GetChild(0).gameObject.SetActive(true);
