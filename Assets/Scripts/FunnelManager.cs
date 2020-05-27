@@ -31,11 +31,12 @@ public class FunnelManager : MonoBehaviour
         sequence.Join(DOTween.To(() => ballsText.fontSize, x => ballsText.fontSize = x, originalSize, 1f));
         
         var sequence2 = DOTween.Sequence();
-        sequence2.Append(transform.DOScaleZ(5.4f,0.5f));
-        sequence2.Join(transform.DOScaleZ(scale.z,2f));
         /*
+        sequence2.Join(transform.DOScaleZ(5.4f,0.5f));
+        sequence2.Join(transform.DOScaleZ(scale.z,2f));
+        */
         sequence2.Join(transform.DOScaleY(5.4f,0.5f));
-        sequence2.Join(transform.DOScaleY(scale.y,2f)); */
+        sequence2.Join(transform.DOScaleY(scale.y,2f)); 
 
 
         

@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     private float cameraHight;
     public int currentBox = 0;
     private int openedDoors = 0;
+    [SerializeField]
     private int maxBox = 5;
     [SerializeField]
     private float distanceBetweenBoxes = 5;
@@ -46,7 +47,7 @@ public class GameManager : MonoBehaviour
         gameManager = this;
         trapDoorLeft = binQueue[currentBox].Find("Mesh/BottomLeft").GetComponent<Rigidbody>();
         trapDoorRight = binQueue[currentBox].Find("Mesh/BottomRight").GetComponent<Rigidbody>();
-        cameraHight = cameraPos.position.y - binQueue[0].transform.position.y;
+        cameraHight = cameraPos.position.y - binQueue[0].transform.position.y - 0.5f;
        
         
         ground.SetActive(true);
@@ -61,8 +62,12 @@ public class GameManager : MonoBehaviour
         var fun = Instantiate(funnel,transform);
         fun.transform.position  = new Vector3(0, ground.transform.position.y + 1.4f, binQueue[0].position.z);
 
-        for (int i = 0; i < Levels.Count; i++)
+        for (int i = 0; i < maxBox; i++)
         {
+            var level = Resources.Load<GameObject>("Prefabs/Levels/Level" + Random.Range(0, 2).ToString());
+            var x = Instantiate(level);
+            Levels.Add(x);
+            
             Levels[i].GetComponent<LevelManager>().levelID = i+1;
             if (i < maxBox - 1)
             {
@@ -163,7 +168,7 @@ public class GameManager : MonoBehaviour
     }
     void MoveLevelCamera()
     {
-            _mainCamera.transform.DOMoveY(binQueue[openedDoors].transform.position.y + cameraHight +distanceBetweenBoxes -1.5f, moveCameraSpeed);
+            _mainCamera.transform.DOMoveY(binQueue[openedDoors].transform.position.y + cameraHight +distanceBetweenBoxes -1.55f, moveCameraSpeed);
         //Camera.main.transform.DOLookAt( binQueue[currentBox+1].Find("Front").position+ new Vector3( 0,2,0),  1.5f);
     }
 

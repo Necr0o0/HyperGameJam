@@ -42,5 +42,5 @@ Material:
     - _VertexColor: 0
     m_Colors:
     - _Asymmetry: {r: 0, g: 0.25, b: 0.5, a: 0}
-    - _Color: {r: 0.90588236, g: 0.3529412, b: 0.4862745, a: 1}
+    - _Color: {r: 0.9372549, g: 0.50980395, b: 0.27058825, a: 1}
     - _OutlineColor: {r: 0.319, g: 0.03706224, b: 0.03706224, a: 1}
