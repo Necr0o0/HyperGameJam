@@ -8,19 +8,23 @@ using Random = UnityEngine.Random;
 public class ScrewMovement : MonoBehaviour
 {
     private Vector3 pos;
-    private float seed;
-    private bool _move;
-    private bool _rotate;
+    private float seed = 0.0f;
+    public bool _move;
+    public bool _rotate;
+    public bool MoveClockWise = true;
+    public bool useSeed = true;
     public float speed = 100.0f;
+
+    private float rotateDir = 1.0f;
     private void Awake()
     {
-        seed = Random.Range(-Mathf.PI, Mathf.PI);
-
-        if (Random.value > 0.1)
-            _move = true;
-
-      
+        if(useSeed)
+            seed = Random.Range(-Mathf.PI, Mathf.PI);
+        
+            
         _rotate = true;
+        if (MoveClockWise)
+            rotateDir = -1f;
     }
 
     void Update()
@@ -41,7 +45,7 @@ public class ScrewMovement : MonoBehaviour
     private void Rotate()
     {
         var angle = transform.localRotation.eulerAngles;
-        angle.z = (Time.time + seed) * speed ;
+        angle.z = (Time.time + seed) * speed * rotateDir ;
         transform.localRotation = Quaternion.Euler(angle);
     }
 }

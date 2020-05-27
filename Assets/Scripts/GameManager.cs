@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,8 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager;
     public GameObject funnel;
     public List<Transform> binQueue;
+    public List<GameObject> Levels;
+
     public GameObject ground;
     public GameObject sky;
 
@@ -24,8 +27,11 @@ public class GameManager : MonoBehaviour
     public int currentBox = 0;
     private int openedDoors = 0;
     private int maxBox = 5;
-    private float distanceBetweenBoxes = 3;
-    private bool levelCompleted = false;
+    [SerializeField]
+    private float distanceBetweenBoxes = 5;
+
+    [SerializeField] private float moveCameraSpeed = 1.0f;
+    private bool levelCompleted;
     private List<List<Renderer>> binMaterials;
     private ParticleSystem _particleSystem;
 
@@ -53,8 +59,18 @@ public class GameManager : MonoBehaviour
         main.startColor = new ParticleSystem.MinMaxGradient(palettes[_paletteNumber].ball1Color, palettes[_paletteNumber].ball2Color);
         ground.transform.position = new Vector3(0, -distanceBetweenBoxes * maxBox + distanceBetweenBoxes * 0.5f - 1.5f , 0);
         var fun = Instantiate(funnel,transform);
-        fun.transform.position  = new Vector3(0, ground.transform.position.y + 1.4f, 1f);
-        
+        fun.transform.position  = new Vector3(0, ground.transform.position.y + 1.4f, binQueue[0].position.z);
+
+        for (int i = 0; i < Levels.Count; i++)
+        {
+            Levels[i].GetComponent<LevelManager>().levelID = i+1;
+            if (i < maxBox - 1)
+            {
+                Levels[i].SetActive(true);
+                Levels[i].transform.position =  new Vector3(0, binQueue[1].position.y - distanceBetweenBoxes * i +1.0f, binQueue[1].position.z) ;
+            }
+       
+        }
     }
 
     private void Update()
@@ -63,14 +79,13 @@ public class GameManager : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
             {
-
-
-
+                
                 OpenDoor();
                 SetNewDoors(currentBox + 1);
 
-                if (currentBox + 1 < maxBox)
-                    MoveCamera();
+                if (openedDoors  < maxBox)
+                   // MoveCamera(currentBox);
+                    MoveLevelCamera();
                 if (currentBox + 2 < maxBox)
                 {
                     SetNewMainBox();
@@ -135,11 +150,21 @@ public class GameManager : MonoBehaviour
         trapDoorRight.isKinematic = false;
     }
 
-    void MoveCamera()
+    public void EndMoveCamera()
     {
-        _mainCamera.transform.DOMoveY(binQueue[currentBox + 1].position.y + cameraHight, 1.5f);
+        _mainCamera.transform.DOMoveY(funnel.transform.position.y , moveCameraSpeed);
         //Camera.main.transform.DOLookAt( binQueue[currentBox+1].Find("Front").position+ new Vector3( 0,2,0),  1.5f);
-
+    }
+    public void MoveCamera(int levelID)
+    {
+        if(levelID == openedDoors && openedDoors < maxBox)
+            _mainCamera.transform.DOMoveY(binQueue[openedDoors].position.y + cameraHight, moveCameraSpeed);
+        //Camera.main.transform.DOLookAt( binQueue[currentBox+1].Find("Front").position+ new Vector3( 0,2,0),  1.5f);
+    }
+    void MoveLevelCamera()
+    {
+            _mainCamera.transform.DOMoveY(binQueue[openedDoors].transform.position.y + cameraHight +distanceBetweenBoxes -1.5f, moveCameraSpeed);
+        //Camera.main.transform.DOLookAt( binQueue[currentBox+1].Find("Front").position+ new Vector3( 0,2,0),  1.5f);
     }
 
     void SetNewMainBox()
@@ -175,6 +200,7 @@ public class GameManager : MonoBehaviour
         trapDoorRight = binQueue[index].Find("Mesh/BottomRight").GetComponent<Rigidbody>();
         if (openedDoors >= maxBox && !levelCompleted)
         {
+            //EndMoveCamera();
             
             var sequence = DOTween.Sequence();
             //sequence.Append(Camera.main.transform.DOLocalMoveZ(-1f,2));

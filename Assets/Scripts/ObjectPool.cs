@@ -40,6 +40,8 @@ public class ObjectPool : MonoBehaviour
             if (!poolBalls[i].activeInHierarchy)
             { 
                 poolBalls[i].SetActive(true);
+                poolBalls[i].GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+                poolBalls[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
                 return poolBalls[i].transform;
             }
         }
