@@ -27,7 +27,7 @@ public class ScrewMovement : MonoBehaviour
             rotateDir = -1f;
     }
 
-    void Update()
+    void LateUpdate()
     {
         if(_move)
             MoveLeftAndRight();

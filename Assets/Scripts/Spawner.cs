@@ -27,7 +27,7 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer > 0.02f + Random.Range(-0.03f, 0.03f) && trashCounter < trashSpawnMax) 
+        if (timer > 0.02f + Random.Range(-0.05f, 0.05f) && trashCounter < trashSpawnMax) 
         {
             SpawnTrash();
         }
@@ -45,11 +45,11 @@ public class Spawner : MonoBehaviour
         _trashRigidbody.velocity = Vector3.zero;
 
         string random = Random.Range(0, 2).ToString();
-        trash.position = transform.position+ new Vector3(Random.Range(-0.4f,0.4f),Random.Range(0f,0.8f),Random.Range(-0.4f,0.4f));
+        trash.position = transform.position + new Vector3(Random.Range(-0.3f,0.3f),Random.Range(0f,1.8f),Random.Range(-0.4f,0.4f));
         Material material = Resources.Load<Material>("Materials/Trash/TrashMaterial" + random);
         Material materialTrace = Resources.Load<Material>("MaterialsNoShader/Trash/TrashMaterial" + random);
 
-        trash.localScale =  _objectPool.getScale() * Random.Range(0.5f, 0.9f);
+        trash.localScale =  _objectPool.getScale() * Random.Range(0.5f, 1.0f);
         if (trash.localScale.x > _objectPool.getScale().x * 0.85f)
         {
             trash.GetChild(0).gameObject.SetActive(true);

@@ -10,7 +10,10 @@ public class DestroyablePlatformController : MonoBehaviour
         if (other.transform.CompareTag("Trash"))
         {
             transform.GetComponent<Rigidbody>().isKinematic = false;
-            transform.DOScale(Vector3.zero, 1.0f);
+            transform.DOScale(Vector3.zero, 0.6f).OnComplete(()=>
+            {
+                gameObject.SetActive(false);
+            });
         }
     }
 }

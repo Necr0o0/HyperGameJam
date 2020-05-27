@@ -11,8 +11,11 @@ public class movement : MonoBehaviour
     private float seed;
     private bool _move;
     private bool _rotate;
+
+    private float _speedSeed;
     private void Awake()
     {
+        _speedSeed = Random.Range(0.7f, 1.0f);
         seed = Random.Range(-Mathf.PI, Mathf.PI);
 
         if (Random.value > 0.1)
@@ -40,7 +43,7 @@ public class movement : MonoBehaviour
     private void Rotate()
     {
         var angle = transform.localRotation.eulerAngles;
-        angle.z = Mathf.Sin(Time.time + seed) * 10f - 2.0f;
+        angle.z = Mathf.Sin(Time.time + seed) * 10f *_speedSeed - 2.0f;
         transform.localRotation = Quaternion.Euler(angle);
     }
 }

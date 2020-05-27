@@ -58,7 +58,7 @@ public class BinManager : MonoBehaviour
             ballsText.text = counterInsideBox.ToString();
 
              var sequence = DOTween.Sequence();
-            sequence.Append(DOTween.To(() => ballsText.fontSize, x => ballsText.fontSize = x, ballsText.fontSize + 7f, 0.1f));
+            sequence.Append(DOTween.To(() => ballsText.fontSize, x => ballsText.fontSize = x, ballsText.fontSize + 4.5f, 0.1f));
             sequence.Join(DOTween.To(() => ballsText.fontSize, x => ballsText.fontSize = x, orginalSize, 0.8f));
             
     }

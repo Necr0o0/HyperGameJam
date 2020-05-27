@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     
     public static GameManager gameManager;
     public GameObject funnel;
+    private GameObject funnelGameObject;
     public List<Transform> binQueue;
     public List<GameObject> Levels;
 
@@ -36,8 +37,10 @@ public class GameManager : MonoBehaviour
     private List<List<Renderer>> binMaterials;
     private ParticleSystem _particleSystem;
 
-    private int _paletteNumber;
+    private int paletteNumber;
 
+    [SerializeField]
+    private  bool randomPalette = true;
     public List<Palette> palettes;
     private Camera _mainCamera;
     
@@ -57,14 +60,14 @@ public class GameManager : MonoBehaviour
 
         _particleSystem = binQueue[1].Find("ParticleSystem/Sparks").GetComponent<ParticleSystem>();
         var main = _particleSystem.main;
-        main.startColor = new ParticleSystem.MinMaxGradient(palettes[_paletteNumber].ball1Color, palettes[_paletteNumber].ball2Color);
+        main.startColor = new ParticleSystem.MinMaxGradient(palettes[paletteNumber].ball1Color, palettes[paletteNumber].ball2Color);
         ground.transform.position = new Vector3(0, -distanceBetweenBoxes * maxBox + distanceBetweenBoxes * 0.5f - 1.5f , 0);
-        var fun = Instantiate(funnel,transform);
-        fun.transform.position  = new Vector3(0, ground.transform.position.y + 1.4f, binQueue[0].position.z);
+        funnelGameObject = Instantiate(funnel,transform);
+        funnelGameObject.transform.position  = new Vector3(0, ground.transform.position.y + 1.0f, binQueue[0].position.z);
 
         for (int i = 0; i < maxBox; i++)
         {
-            var level = Resources.Load<GameObject>("Prefabs/Levels/Level" + Random.Range(0, 2).ToString());
+            var level = Resources.Load<GameObject>("Prefabs/Levels/Level" + Random.Range(0, 6).ToString());
             var x = Instantiate(level);
             Levels.Add(x);
             
@@ -72,7 +75,8 @@ public class GameManager : MonoBehaviour
             if (i < maxBox - 1)
             {
                 Levels[i].SetActive(true);
-                Levels[i].transform.position =  new Vector3(0, binQueue[1].position.y - distanceBetweenBoxes * i +1.0f, binQueue[1].position.z) ;
+                Levels[i].GetComponent<Renderer>().enabled = false;
+                Levels[i].transform.position =  new Vector3(0, binQueue[1].position.y - distanceBetweenBoxes * i +1.2f, binQueue[1].position.z) ;
             }
        
         }
@@ -102,8 +106,13 @@ public class GameManager : MonoBehaviour
 
     public void SetColors()
     {
-        int paletteNumber = Random.Range(0,4);
-        _paletteNumber = paletteNumber;
+        if(randomPalette)
+            paletteNumber =  Random.Range(0,4);
+        else
+        {
+            paletteNumber = 1;
+        }
+        paletteNumber = paletteNumber;
         Debug.Log("paletteNumber:" + paletteNumber);
         
         var ball1Material = Resources.Load<Material>("Materials/Trash/TrashMaterial0");
@@ -118,7 +127,7 @@ public class GameManager : MonoBehaviour
 
         
         ground.GetComponent<Renderer>().sharedMaterial.color = palettes[paletteNumber].groundColor;
-        funnel.GetComponent<Renderer>().sharedMaterial.color = palettes[paletteNumber].funnelColor;
+        funnel.GetComponent<Renderer>().sharedMaterial.color = palettes[paletteNumber].boxColor;
         sky.GetComponent<Renderer>().sharedMaterial.color = palettes[paletteNumber].backgroundColor;
         boxMaterial.color = palettes[paletteNumber].boxColor;
         
@@ -157,7 +166,12 @@ public class GameManager : MonoBehaviour
 
     public void EndMoveCamera()
     {
-        _mainCamera.transform.DOMoveY(funnel.transform.position.y , moveCameraSpeed);
+        var seqence = DOTween.Sequence();
+        seqence.Append(_mainCamera.transform.DOMoveY(funnelGameObject.transform.position.y + cameraHight + 4.0f,
+            moveCameraSpeed));
+        seqence.Join(_mainCamera.transform.DOLocalMoveZ(0.2f, moveCameraSpeed));
+        seqence.Join(  _mainCamera.transform.DORotate(new Vector3(30,0,0), moveCameraSpeed));
+
         //Camera.main.transform.DOLookAt( binQueue[currentBox+1].Find("Front").position+ new Vector3( 0,2,0),  1.5f);
     }
     public void MoveCamera(int levelID)
@@ -181,7 +195,7 @@ public class GameManager : MonoBehaviour
         
         _particleSystem = x.Find("ParticleSystem/Sparks").GetComponent<ParticleSystem>();
         var main = _particleSystem.main;
-        main.startColor = new ParticleSystem.MinMaxGradient(palettes[_paletteNumber].ball1Color, palettes[_paletteNumber].ball2Color);
+        main.startColor = new ParticleSystem.MinMaxGradient(palettes[paletteNumber].ball1Color, palettes[paletteNumber].ball2Color);
         binQueue.Add(x.transform);
         currentBox++;
         
@@ -205,7 +219,7 @@ public class GameManager : MonoBehaviour
         trapDoorRight = binQueue[index].Find("Mesh/BottomRight").GetComponent<Rigidbody>();
         if (openedDoors >= maxBox && !levelCompleted)
         {
-            //EndMoveCamera();
+            EndMoveCamera();
             
             var sequence = DOTween.Sequence();
             //sequence.Append(Camera.main.transform.DOLocalMoveZ(-1f,2));

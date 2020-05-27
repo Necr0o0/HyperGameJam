@@ -30,14 +30,14 @@ public class FunnelManager : MonoBehaviour
         sequence.Append(DOTween.To(() => ballsText.fontSize, x => ballsText.fontSize = x, ballsText.fontSize + 1.5f, 0.1f));
         sequence.Join(DOTween.To(() => ballsText.fontSize, x => ballsText.fontSize = x, originalSize, 1f));
         
-        var sequence2 = DOTween.Sequence();
         /*
-        sequence2.Join(transform.DOScaleZ(5.4f,0.5f));
-        sequence2.Join(transform.DOScaleZ(scale.z,2f));
+        var sequence2 = DOTween.Sequence();
+        sequence2.Append(transform.DOScaleZ(5.4f,1f));
+        sequence2.Join(transform.DOScaleZ(scale.z,4f));
+        
+        sequence2.Join(transform.DOScaleY(5.4f,1f));
+        sequence2.Join(transform.DOScaleY(scale.y,4f)); 
         */
-        sequence2.Join(transform.DOScaleY(5.4f,0.5f));
-        sequence2.Join(transform.DOScaleY(scale.y,2f)); 
-
 
         
         Funnel.material.color = Color.Lerp(   Funnel.material.color, new Color(color.r,color.g,color.b,0), counterInsideBox / 2000f);
